@@ -188,6 +188,10 @@ Contributions welcome! Here's how:
 - **☁️ Google Drive MCP** - File management for the AI era
 - **📝 Google Docs MCP** - Collaborative writing with AI superpowers
 
+**Other Calendar Providers:**
+- **📅 Outlook/Microsoft 365** - Because not everyone lives in Google land
+- **🍎 Apple Calendar (CalDAV)** - For the Mac enthusiasts
+
 Got another idea? **Just build it!**
 
 The beauty of this setup is that it's dead simple to extend. Copy the auth flow, swap the API endpoints, and boom - you've got yourself a new MCP server.
