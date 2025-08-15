@@ -31,7 +31,7 @@ Skip the OAuth nightmare. No Google Cloud Console. No service accounts. No heada
    {
      "mcpServers": {
        "google-calendar": {
-         "url": "https://cal-mcp.com/mcp"
+         "url": "https://cal-mcp.com/api/mcp"
        }
      }
    }
@@ -43,7 +43,7 @@ Skip the OAuth nightmare. No Google Cloud Console. No service accounts. No heada
      "mcpServers": {
        "google-calendar": {
          "command": "npx",
-         "args": ["-y", "mcp-remote", "https://cal-mcp.com/mcp"]
+         "args": ["-y", "mcp-remote", "https://cal-mcp.com/api/mcp"]
        }
      }
    }

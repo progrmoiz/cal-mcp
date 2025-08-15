@@ -50,7 +50,7 @@ export default function Home() {
     (process.env.NODE_ENV === 'production' 
       ? 'https://cal-mcp.com' 
       : 'http://localhost:3000');
-  const mcpUrl = `${baseUrl}/mcp`;
+  const mcpUrl = `${baseUrl}/api/mcp`;
 
   const { data: session, isPending } = authClient.useSession();
 
