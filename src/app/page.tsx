@@ -115,7 +115,11 @@ export default function Home() {
               Authorize access to your Google Calendar to generate your MCP configuration.
             </p>
             {!isAuthenticated ? (
-              <Button onClick={handleAuth} size="sm" className="w-fit">
+              <Button onClick={handleAuth} 
+                variant="outline" 
+                size="sm" 
+                className="w-fit"
+              >
                 Connect Google Calendar
               </Button>
             ) : (
