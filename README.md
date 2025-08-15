@@ -53,7 +53,7 @@ Skip the OAuth nightmare. No Google Cloud Console. No service accounts. No heada
 
 1. **Grab the code:**
    ```bash
-   git clone <repo-url>
+   git clone https://github.com/progrmoiz/calendar-mcp
    cd google-calendar-mcp
    npm install
    ```
