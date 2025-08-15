@@ -39,6 +39,7 @@ export default function LoginPage() {
           <CardContent className="space-y-6">
             <Button 
               onClick={handleGoogleLogin} 
+              variant="outline"
               className="w-full h-11 text-base"
               size="lg"
             >
