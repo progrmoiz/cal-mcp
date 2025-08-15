@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { listCalendars, listEvents, createEvent, updateEvent, deleteEvent, listColors, getFreeBusy, searchEvents, getCurrentTime, getEvent, moveEvent } from "./calendar";
 import { auth } from "./auth";
+import type { calendar_v3 } from "googleapis";
 
 // Create authInfo using Better Auth's getAccessToken API (like Mirror-Mind pattern)
 async function getAuthInfo(userId: string) {
@@ -31,16 +32,9 @@ async function getAuthInfo(userId: string) {
 }
 
 // Minimal wrapper to register core Google Calendar tools on our existing MCP handler factory
-interface McpServer {
-    tool: (
-        name: string,
-        description: string,
-        schema: Record<string, unknown>,
-        handler: (...args: unknown[]) => Promise<{ content: Array<{ type: string; text: string }> }>
-    ) => void;
-}
+import type { McpServer as ImportedMcpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 
-export function registerCalendarTools(server: McpServer, userId: string) {
+export function registerCalendarTools(server: ImportedMcpServer, userId: string) {
     server.tool(
         "list-calendars",
         "List all available calendars",
@@ -86,7 +80,7 @@ export function registerCalendarTools(server: McpServer, userId: string) {
             reminders: z.any().optional(),
             recurrence: z.array(z.string()).optional()
         },
-        async (args: { calendarId: string; summary: string; description?: string; start: string; end: string; timeZone?: string; location?: string; attendees?: Array<{ email: string }>; colorId?: string; reminders?: unknown; recurrence?: string[] }) => {
+        async (args: { calendarId: string; summary: string; description?: string; start: string; end: string; timeZone?: string; location?: string; attendees?: Array<{ email: string }>; colorId?: string; reminders?: calendar_v3.Schema$Event["reminders"]; recurrence?: string[] }) => {
             const authInfo = await getAuthInfo(userId);
             const data = await createEvent({ ...args, authInfo });
             return { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] };
@@ -111,7 +105,7 @@ export function registerCalendarTools(server: McpServer, userId: string) {
             recurrence: z.array(z.string()).optional(),
             sendUpdates: z.enum(["all", "externalOnly", "none"]).optional()
         },
-        async (args: { calendarId: string; eventId: string; summary?: string; description?: string; start?: string; end?: string; timeZone?: string; location?: string; attendees?: Array<{ email: string }>; colorId?: string; reminders?: unknown; recurrence?: string[]; sendUpdates?: "all" | "externalOnly" | "none" }) => {
+        async (args: { calendarId: string; eventId: string; summary?: string; description?: string; start?: string; end?: string; timeZone?: string; location?: string; attendees?: Array<{ email: string }>; colorId?: string; reminders?: calendar_v3.Schema$Event["reminders"]; recurrence?: string[]; sendUpdates?: "all" | "externalOnly" | "none" }) => {
             const authInfo = await getAuthInfo(userId);
             const data = await updateEvent({ ...args, authInfo });
             return { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] };
