@@ -19,7 +19,7 @@ Skip the OAuth nightmare. No Google Cloud Console. No service accounts. No heada
 ## Just Want to Use It?
 
 1. **Connect your calendar:**
-   - Go to https://calendar-mcp.vercel.app
+   - Go to https://google-calendar-mcp.vercel.app
    - Hit "Connect Google Calendar"
    - Do the OAuth dance
    - Copy your config
@@ -31,7 +31,7 @@ Skip the OAuth nightmare. No Google Cloud Console. No service accounts. No heada
    {
      "mcpServers": {
        "google-calendar": {
-         "url": "https://calendar-mcp.vercel.app/api/mcp"
+         "url": "https://google-calendar-mcp.vercel.app/api/mcp"
        }
      }
    }
@@ -43,7 +43,7 @@ Skip the OAuth nightmare. No Google Cloud Console. No service accounts. No heada
      "mcpServers": {
        "google-calendar": {
          "command": "npx",
-         "args": ["-y", "mcp-remote", "https://calendar-mcp.vercel.app/api/mcp"]
+         "args": ["-y", "mcp-remote", "https://google-calendar-mcp.vercel.app/api/mcp"]
        }
      }
    }

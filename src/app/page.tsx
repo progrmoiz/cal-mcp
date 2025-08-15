@@ -84,9 +84,19 @@ export default function Home() {
           )}
         </div>
         
-        <footer className="pt-12">
+        <footer className="pt-12 space-y-2">
           <p className="text-sm text-muted-foreground">
             Works with Claude Desktop, Cursor, Zed, and any MCP-compatible client
+          </p>
+          <p className="text-sm text-muted-foreground">
+            <a 
+              href="https://github.com/progrmoiz/calendar-mcp" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-accent hover:text-accent/80 underline"
+            >
+              Open Source on GitHub
+            </a>
           </p>
         </footer>
       </div>
