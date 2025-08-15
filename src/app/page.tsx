@@ -48,9 +48,9 @@ export default function Home() {
 
   const baseUrl = process.env.NEXT_PUBLIC_URL || 
     (process.env.NODE_ENV === 'production' 
-      ? 'https://calendar-mcp.vercel.app' 
+      ? 'https://cal-mcp.com' 
       : 'http://localhost:3000');
-  const mcpUrl = `${baseUrl}/api/mcp`;
+  const mcpUrl = `${baseUrl}/mcp`;
 
   const { data: session, isPending } = authClient.useSession();
 
@@ -188,7 +188,7 @@ export default function Home() {
             </div>
             <div className="leading-relaxed pt-2 text-xs">
               <a 
-                href="https://github.com/progrmoiz/calendar-mcp" 
+                href="https://github.com/progrmoiz/cal-mcp" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-blue-500 hover:text-blue-700 transition-colors"

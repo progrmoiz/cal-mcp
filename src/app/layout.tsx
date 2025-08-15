@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export async function generateMetadata(): Promise<Metadata> {
   const baseUrl = process.env.NEXT_PUBLIC_URL || 
     (process.env.NODE_ENV === 'production' 
-      ? 'https://calendar-mcp.vercel.app' 
+      ? 'https://cal-mcp.com' 
       : 'http://localhost:3000');
 
   const currentDate = new Date().getDate();
