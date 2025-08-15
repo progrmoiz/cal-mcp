@@ -9,6 +9,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/calendar/images/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'developers.google.com',
+        port: '',
+        pathname: '/identity/images/**',
+      },
     ],
   },
 };
