@@ -150,7 +150,7 @@ export default function Home() {
               </div>
               <Button 
                 onClick={handleCopyMcpUrl}
-                variant={isCopied ? "outline" : "secondary"}
+                variant="outline"
                 size="sm"
                 className="w-fit"
                 disabled={!isAuthenticated}
