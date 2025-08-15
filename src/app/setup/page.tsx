@@ -56,7 +56,7 @@ export default function SuccessPage() {
         <div className="space-y-6">
           <h2 className="text-2xl font-bold">Connect through your AI tool</h2>
           <p className="text-muted-foreground">
-            To connect, search for "Google Calendar MCP" in your tool's MCP directory or use this configuration:
+            To connect, search for &quot;Google Calendar MCP&quot; in your tool&apos;s MCP directory or use this configuration:
           </p>
 
           {/* Streamable HTTP */}
@@ -108,7 +108,7 @@ export default function SuccessPage() {
         <div className="space-y-6">
           <h2 className="text-2xl font-bold">Troubleshooting connection issues</h2>
           <p className="text-muted-foreground">
-            If you're experiencing issues connecting your AI tool to Google Calendar MCP, here are some common solutions:
+            If you&apos;re experiencing issues connecting your AI tool to Google Calendar MCP, here are some common solutions:
           </p>
 
           <div className="space-y-6">
@@ -122,7 +122,7 @@ export default function SuccessPage() {
             <div>
               <h3 className="text-lg font-semibold mb-2">Verify Remote Server Support</h3>
               <p className="text-muted-foreground">
-                Some AI tools have MCP clients but don't support remote connections. If this is the case, try the STDIO configuration above.
+                Some AI tools have MCP clients but don&apos;t support remote connections. If this is the case, try the STDIO configuration above.
               </p>
             </div>
 
@@ -136,7 +136,7 @@ export default function SuccessPage() {
             <div>
               <h3 className="text-lg font-semibold mb-2">Request MCP Support</h3>
               <p className="text-muted-foreground">
-                If your AI tool doesn't support MCP at all, reach out to the tool's developers to request MCP server connection support. This helps expand the ecosystem of MCP-compatible tools.
+                If your AI tool doesn&apos;t support MCP at all, reach out to the tool&apos;s developers to request MCP server connection support. This helps expand the ecosystem of MCP-compatible tools.
               </p>
             </div>
           </div>

@@ -22,8 +22,8 @@ async function getAuthInfo(userId: string) {
             // Note: We don't need refresh token, clientId, scopes, or expiryDate
             // because Better Auth's getAccessToken() handles all of that internally
         };
-    } catch (error: any) {
-        if (error.message?.includes("No account found")) {
+    } catch (error: unknown) {
+        if (error instanceof Error && error.message?.includes("No account found")) {
             throw new Error("No Google account connected. Please connect your Google account first.");
         }
         throw error;
@@ -31,7 +31,16 @@ async function getAuthInfo(userId: string) {
 }
 
 // Minimal wrapper to register core Google Calendar tools on our existing MCP handler factory
-export function registerCalendarTools(server: any, userId: string) {
+interface McpServer {
+    tool: (
+        name: string,
+        description: string,
+        schema: Record<string, unknown>,
+        handler: (...args: unknown[]) => Promise<{ content: Array<{ type: string; text: string }> }>
+    ) => void;
+}
+
+export function registerCalendarTools(server: McpServer, userId: string) {
     server.tool(
         "list-calendars",
         "List all available calendars",
@@ -54,7 +63,7 @@ export function registerCalendarTools(server: any, userId: string) {
             maxResults: z.number().optional(),
             q: z.string().optional()
         },
-        async (args: any) => {
+        async (args: { calendarId: string; timeMin?: string; timeMax?: string; timeZone?: string; maxResults?: number; q?: string }) => {
             const authInfo = await getAuthInfo(userId);
             const items = await listEvents({ ...args, authInfo });
             return { content: [{ type: "text", text: JSON.stringify(items, null, 2) }] };
@@ -77,7 +86,7 @@ export function registerCalendarTools(server: any, userId: string) {
             reminders: z.any().optional(),
             recurrence: z.array(z.string()).optional()
         },
-        async (args: any) => {
+        async (args: { calendarId: string; summary: string; description?: string; start: string; end: string; timeZone?: string; location?: string; attendees?: Array<{ email: string }>; colorId?: string; reminders?: unknown; recurrence?: string[] }) => {
             const authInfo = await getAuthInfo(userId);
             const data = await createEvent({ ...args, authInfo });
             return { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] };
@@ -102,7 +111,7 @@ export function registerCalendarTools(server: any, userId: string) {
             recurrence: z.array(z.string()).optional(),
             sendUpdates: z.enum(["all", "externalOnly", "none"]).optional()
         },
-        async (args: any) => {
+        async (args: { calendarId: string; eventId: string; summary?: string; description?: string; start?: string; end?: string; timeZone?: string; location?: string; attendees?: Array<{ email: string }>; colorId?: string; reminders?: unknown; recurrence?: string[]; sendUpdates?: "all" | "externalOnly" | "none" }) => {
             const authInfo = await getAuthInfo(userId);
             const data = await updateEvent({ ...args, authInfo });
             return { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] };
@@ -117,7 +126,7 @@ export function registerCalendarTools(server: any, userId: string) {
             eventId: z.string(),
             sendUpdates: z.enum(["all", "externalOnly", "none"]).optional()
         },
-        async (args: any) => {
+        async (args: { calendarId: string; eventId: string; sendUpdates?: "all" | "externalOnly" | "none" }) => {
             const authInfo = await getAuthInfo(userId);
             const data = await deleteEvent({ ...args, authInfo });
             return { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] };
@@ -146,7 +155,7 @@ export function registerCalendarTools(server: any, userId: string) {
             groupExpansionMax: z.number().int().max(100).optional(),
             calendarExpansionMax: z.number().int().max(50).optional()
         },
-        async (args: any) => {
+        async (args: { calendars: Array<{ id: string }>; timeMin: string; timeMax: string; timeZone?: string; groupExpansionMax?: number; calendarExpansionMax?: number }) => {
             const authInfo = await getAuthInfo(userId);
             const data = await getFreeBusy({ ...args, authInfo });
             return { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] };
@@ -164,7 +173,7 @@ export function registerCalendarTools(server: any, userId: string) {
             timeZone: z.string().optional(),
             maxResults: z.number().optional()
         },
-        async (args: any) => {
+        async (args: { calendarId: string; query: string; timeMin: string; timeMax: string; timeZone?: string; maxResults?: number }) => {
             const authInfo = await getAuthInfo(userId);
             const items = await searchEvents({ ...args, authInfo });
             return { content: [{ type: "text", text: JSON.stringify(items, null, 2) }] };
@@ -188,7 +197,7 @@ export function registerCalendarTools(server: any, userId: string) {
             calendarId: z.string(),
             eventId: z.string()
         },
-        async (args: any) => {
+        async (args: { calendarId: string; eventId: string }) => {
             const authInfo = await getAuthInfo(userId);
             const data = await getEvent({ ...args, authInfo });
             return { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] };
@@ -203,7 +212,7 @@ export function registerCalendarTools(server: any, userId: string) {
             targetCalendarId: z.string(),
             eventId: z.string()
         },
-        async (args: any) => {
+        async (args: { sourceCalendarId: string; targetCalendarId: string; eventId: string }) => {
             const authInfo = await getAuthInfo(userId);
             const data = await moveEvent({ ...args, authInfo });
             return { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] };
