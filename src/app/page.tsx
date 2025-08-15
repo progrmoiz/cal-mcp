@@ -170,11 +170,11 @@ export default function Home() {
             <p className="text-zinc-500">
               Some examples:
               <br />
-              "What meetings do I have tomorrow?"
+              &ldquo;What meetings do I have tomorrow?&rdquo;
               <br />
-              "Schedule a 30-minute call with John next week"
+              &ldquo;Schedule a 30-minute call with John next week&rdquo;
               <br />
-              "What's free on Friday afternoon?"
+              &ldquo;What&apos;s free on Friday afternoon?&rdquo;
             </p>
           </Step>
         </section>
