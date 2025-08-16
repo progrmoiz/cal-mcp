@@ -188,7 +188,7 @@ export default function Home() {
         <div className="flex-1 px-4 max-w-2xl">
           <div className="py-4 flex-1 flex justify-between border-t border-zinc-200 text-zinc-400 flex-col">
             <div className="leading-relaxed pt-3 text-xs">
-              Works with Claude Desktop, Cursor, Zed, and any MCP-compatible client
+              Works with TeamAI, Claude Desktop, Cursor, Zed, and any MCP-compatible client
             </div>
             <div className="leading-relaxed pt-2 text-xs">
               <a 
