@@ -190,7 +190,7 @@ export default function Home() {
             <div className="leading-relaxed pt-3 text-xs">
               Works with TeamAI, Claude Desktop, Cursor, Zed, and any MCP-compatible client
             </div>
-            <div className="leading-relaxed pt-2 text-xs">
+            <div className="leading-relaxed pt-2 text-xs space-x-4">
               <a 
                 href="https://github.com/progrmoiz/cal-mcp" 
                 target="_blank" 
@@ -198,6 +198,12 @@ export default function Home() {
                 className="text-blue-500 hover:text-blue-700 transition-colors"
               >
                 Open Source on GitHub
+              </a>
+              <a 
+                href="/privacy" 
+                className="text-blue-500 hover:text-blue-700 transition-colors"
+              >
+                Privacy Policy
               </a>
             </div>
           </div>
