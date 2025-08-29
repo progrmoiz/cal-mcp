@@ -11,7 +11,7 @@ export default function PrivacyPolicy() {
 
           <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">Overview</h2>
           <p className="text-gray-700 mb-4">
-            CalMCP ("we," "our," or "us") provides a Google Calendar integration service for AI assistants. 
+            CalMCP (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) provides a Google Calendar integration service for AI assistants. 
             This Privacy Policy explains how we collect, use, and protect your information when you use our service.
           </p>
 
@@ -51,7 +51,7 @@ export default function PrivacyPolicy() {
             We do not sell, trade, or share your personal information with third parties, except:
           </p>
           <ul className="list-disc pl-6 text-gray-700 mb-4">
-            <li>With Google's APIs as necessary to provide calendar functionality</li>
+            <li>With Google&apos;s APIs as necessary to provide calendar functionality</li>
             <li>When required by law or to protect our rights</li>
             <li>With your explicit consent</li>
           </ul>
@@ -66,7 +66,7 @@ export default function PrivacyPolicy() {
 
           <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">Google OAuth Compliance</h2>
           <p className="text-gray-700 mb-4">
-            Our use of Google APIs adheres to Google's API Services User Data Policy, including the Limited Use requirements. 
+            Our use of Google APIs adheres to Google&apos;s API Services User Data Policy, including the Limited Use requirements. 
             We only use Google user data to provide and improve our calendar integration features.
           </p>
 
@@ -78,7 +78,7 @@ export default function PrivacyPolicy() {
             <li>Account data: Until account deletion requested</li>
           </ul>
 
-          <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">Children's Privacy</h2>
+          <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">Children&apos;s Privacy</h2>
           <p className="text-gray-700 mb-4">
             Our service is not intended for children under 13. We do not knowingly collect personal information from children under 13.
           </p>
@@ -99,7 +99,7 @@ export default function PrivacyPolicy() {
 
           <div className="mt-12 pt-8 border-t border-gray-200">
             <p className="text-sm text-gray-500">
-              This privacy policy is designed to comply with GDPR, CCPA, and Google's API requirements.
+              This privacy policy is designed to comply with GDPR, CCPA, and Google&apos;s API requirements.
             </p>
           </div>
         </div>
